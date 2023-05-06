@@ -1,7 +1,6 @@
 import napari
 from napari import Viewer as NapariViewer, layers
 import numpy as np
-from vispy.util import keys
 
 from dataset_viewer.dataset import Dataset
 
@@ -9,9 +8,9 @@ from dataset_viewer.dataset import Dataset
 class Viewer():
     __image_idx = 0
 
-    def __init__(self):
+    def __init__(self, dataset = Dataset()):
         self.viewer = NapariViewer()
-        self.dataset = Dataset()
+        self.dataset = dataset
 
         self.labels_layer = None
         self.__set_bindings()
@@ -21,6 +20,7 @@ class Viewer():
         napari.run()
 
     def __set_bindings(self):
+        # Add reset option ('r')
         self.__bind_key('l', self.__current_label_name)
         self.__bind_key('Escape', self.__exit)
         self.__bind_key('Left', self.__previous)
