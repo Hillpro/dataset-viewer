@@ -26,6 +26,9 @@ class Dataset():
         _images = [glob(f'{self.images_path}/*.{ext}') for ext in VALID_FILE_TYPES]
         self.images = [open(item) for i in _images for item in i]
 
+        if len(self.images == 0):
+            raise Exception('No images were found')
+
     def get(self, index: int) -> tuple[Image, str]:
         index %= len(self.images)
         image = self.images[index]
