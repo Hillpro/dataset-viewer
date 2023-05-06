@@ -59,6 +59,3 @@ class Viewer():
 
     def __exit(self, viewer: NapariViewer):
         viewer.close()
-
-
-Viewer().start()
