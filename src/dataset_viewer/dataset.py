@@ -19,7 +19,10 @@ def empty_image(img):
 
 
 class Dataset():
-    def __init__(self, data_path=DEFAULT_PATH):
+    def __init__(self, data_path: Path = None):
+        if data_path is None:
+            data_path = DEFAULT_PATH
+
         self.images_path = data_path / 'images'
         self.labels_path = data_path / 'labels'
 

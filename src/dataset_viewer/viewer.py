@@ -8,9 +8,9 @@ from dataset_viewer.dataset import Dataset
 class Viewer():
     __image_idx = 0
 
-    def __init__(self, dataset = Dataset()):
+    def __init__(self, dataset: Dataset = None):
         self.viewer = NapariViewer()
-        self.dataset = dataset
+        self.dataset = dataset if dataset is not None else Dataset()
 
         self.labels_layer = None
         self.__set_bindings()
