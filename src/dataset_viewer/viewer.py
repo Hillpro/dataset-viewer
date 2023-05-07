@@ -16,17 +16,20 @@ class Viewer():
         self.__set_bindings()
 
     def start(self):
+        '''Starts the viewer gui with the first image in the dataset'''
         self.__show_image(0)
         napari.run()
 
     def __set_bindings(self):
-        # Add reset option ('r')
+        '''Set the current viewer key bindings'''
+        # TODO: Add reset option ('r')
         self.__bind_key('l', self.__current_label_name)
         self.__bind_key('Escape', self.__exit)
         self.__bind_key('Left', self.__previous)
         self.__bind_key('Right', self.__next)
 
     def __bind_key(self, key, func):
+        '''Set a key binding the the viewer'''
         self.viewer.bind_key(key, func)
 
     def __previous(self, viewer: NapariViewer):
@@ -36,6 +39,14 @@ class Viewer():
         self.__show_image(1)
 
     def __show_image(self, move=0):
+        '''Save current image labels and goes to the next image
+
+        Parameters
+        ----------
+        move : int
+            movement applied to the current image index.
+            0 to show the current image, 1 to show next, -1 to show previous
+        '''
         if self.labels_layer is not None:
             self.dataset.save_labels(self.__image_idx, self.labels_layer.data)
 
@@ -47,6 +58,13 @@ class Viewer():
         self.__set_labels_layer(image)
 
     def __set_labels_layer(self, image):
+        '''Set the labels layer for an image
+
+        Parameters
+        ----------
+        image : Image
+            Image to set the labels layer from
+        '''
         labels = self.dataset.get_labels_for(image)
         self.labels_layer = self.viewer.add_labels(np.array(labels), name='segmentation')
         self.labels_layer.mode = 'PAINT'

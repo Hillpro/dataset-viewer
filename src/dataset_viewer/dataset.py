@@ -26,8 +26,8 @@ def empty_image(img):
 
 
 class Dataset():
-    """
-    A class used to represent an Dataset to show in the Viewer
+    '''
+    A class used to represent a Dataset to show in the Viewer
 
     Attributes
     ----------
@@ -38,15 +38,15 @@ class Dataset():
     -------
     Exception
         If no images can be found
-    """
+    '''
 
     def __init__(self, data_path: Path = None):
-        """
+        '''
         Parameters
         ----------
         data_path : Path
             The path for images and labels
-        """
+        '''
 
         if data_path is None:
             data_path = DEFAULT_PATH
