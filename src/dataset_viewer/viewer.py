@@ -6,6 +6,22 @@ from dataset_viewer.dataset import Dataset
 
 
 class Viewer():
+    '''
+    A class used to represent a Dataset to show in the Viewer
+
+    Attributes
+    ----------
+    viewer : Viewer
+        The viewer gui instance
+    dataset : Dataset
+        The current viewer dataset
+
+    Methods
+    -------
+    start()
+        Start the viewer gui with the current dataset
+    '''
+
     __image_idx = 0
 
     def __init__(self, dataset: Dataset = None):
