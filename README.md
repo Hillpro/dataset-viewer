@@ -1,8 +1,10 @@
 # Dataset Viewer
 
 [![License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/Hillpro/dataset-viewer/blob/main/LICENSE)
-[![Supported Python versions](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://python.org)
-[![Python package index](https://img.shields.io/badge/pypi-1.0.0-orange.svg)](https://pypi.org/project/dataset-viewer)
+[![Supported Python versions](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2FHillpro%2Fdataset-viewer%2Frefs%2Fheads%2Fmain%2Fpyproject.toml&query=%24%5Bproject%5D.requires-python&label=python&color=blue&link=https%3A%2F%2Fpypi.org%2Fproject%2Fdataset-viewer%2F
+)](https://python.org)
+[![Python package index](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2FHillpro%2Fdataset-viewer%2Frefs%2Fheads%2Fmain%2Fpyproject.toml&query=%24%5Bproject%5D.version&label=pypi&color=orange&link=https%3A%2F%2Fpypi.org%2Fproject%2Fdataset-viewer%2F
+)](https://pypi.org/project/dataset-viewer)
 [![Python package index download statistics](https://img.shields.io/badge/downloads-1.5k/month-brightgreen.svg)](https://pypistats.org/packages/dataset-viewer)
 [![Development Status](https://img.shields.io/badge/status-alpha-red.svg)](https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha)
 
