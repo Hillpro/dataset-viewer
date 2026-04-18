@@ -22,12 +22,11 @@ class Viewer():
         Start the viewer gui with the current dataset
     '''
 
-    __image_idx = 0
-
     def __init__(self, dataset: Dataset = None):
         self.viewer = NapariViewer()
         self.dataset = dataset if dataset is not None else Dataset()
 
+        self.__image_idx = 0
         self.labels_layer = None
         self.__set_bindings()
 
