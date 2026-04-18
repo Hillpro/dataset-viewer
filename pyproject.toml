@@ -10,14 +10,18 @@ authors = [
 ]
 description = "Allow to view a dataset image by image and edit their labels"
 readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 dependencies = [
   "napari",
+  "numpy",
+  "Pillow",
 ]
 
 [project.optional-dependencies]
