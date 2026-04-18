@@ -6,7 +6,7 @@
 [![Python package index](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2FHillpro%2Fdataset-viewer%2Frefs%2Fheads%2Fmain%2Fpyproject.toml&query=%24%5Bproject%5D.version&label=pypi&color=orange&link=https%3A%2F%2Fpypi.org%2Fproject%2Fdataset-viewer%2F
 )](https://pypi.org/project/dataset-viewer)
 [![Python package index download statistics](https://img.shields.io/pypi/dm/dataset-viewer)](https://pypistats.org/packages/dataset-viewer)
-[![Development Status](https://img.shields.io/badge/status-alpha-red.svg)](https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha)
+[![Development Status](https://img.shields.io/badge/status-beta-yellow.svg)](https://en.wikipedia.org/wiki/Software_release_life_cycle#Beta)
 
 A small [napari](https://napari.org) wrapper that lets you step through a folder of images and paint / edit segmentation labels for each one. Labels are saved to disk as PNGs, one per image.
 

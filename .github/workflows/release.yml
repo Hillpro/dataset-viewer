@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Verify tag matches pyproject version
+        run: |
+          python -m pip install tomli
+          tag="${GITHUB_REF_NAME#v}"
+          pyproject_version=$(python -c "import tomli, pathlib; print(tomli.loads(pathlib.Path('pyproject.toml').read_text())['project']['version'])")
+          if [ "$tag" != "$pyproject_version" ]; then
+            echo "Tag version ($tag) does not match pyproject.toml version ($pyproject_version)" >&2
+            exit 1
+          fi
+
+      - name: Build sdist and wheel
+        run: |
+          python -m pip install --upgrade build
+          python -m build
+
+      - name: Publish to PyPI
+        run: |
+          oidc_token=$(curl -sSL \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=pypi" | python -c "import json, sys; print(json.load(sys.stdin)['value'])")
+          pypi_token=$(curl -sSL -X POST https://pypi.org/_/oidc/mint-token \
+            -H "Content-Type: application/json" \
+            -d "{\"token\": \"$oidc_token\"}" | python -c "import json, sys; print(json.load(sys.stdin)['token'])")
+          echo "::add-mask::$pypi_token"
+          python -m pip install --upgrade twine
+          TWINE_USERNAME=__token__ TWINE_PASSWORD="$pypi_token" python -m twine upload dist/*
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --title "${GITHUB_REF_NAME#v}" \
+            --generate-notes \
+            dist/*

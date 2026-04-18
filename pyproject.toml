@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dataset-viewer"
-version = "1.0.0"
+version = "1.0.1"
 authors = [
   { name="Hillpro", email="66534835+Hillpro@users.noreply.github.com" },
 ]
@@ -12,7 +12,9 @@ description = "Allow to view a dataset image by image and edit their labels"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.9"
+keywords = ["napari", "dataset", "segmentation", "labels", "viewer", "annotation"]
 classifiers = [
+    "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "License :: OSI Approved :: MIT License",
