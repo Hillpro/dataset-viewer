@@ -6,7 +6,6 @@ from PIL.Image import Image, open, fromarray
 import numpy as np
 
 
-DEFAULT_PATH = Path('..', '..', 'data')
 VALID_FILE_TYPES = ["jpg", "jpeg", "png"]
 
 
@@ -45,11 +44,12 @@ class Dataset():
         Parameters
         ----------
         data_path : Path
-            The path for images and labels
+            The path for images and labels. Defaults to ``./data`` relative
+            to the current working directory.
         '''
 
         if data_path is None:
-            data_path = DEFAULT_PATH
+            data_path = Path.cwd() / 'data'
 
         self.images_path = data_path / 'images'
         self.labels_path = data_path / 'labels'

@@ -43,7 +43,7 @@ from dataset_viewer import Viewer, Dataset
 Viewer(Dataset(Path("path/to/data"))).start()
 ```
 
-`Dataset()` with no argument falls back to `../../data` **relative to the current working directory**, so prefer passing an explicit path.
+`Dataset()` with no argument defaults to `./data` relative to the **current working directory**.
 
 ### Key bindings
 
